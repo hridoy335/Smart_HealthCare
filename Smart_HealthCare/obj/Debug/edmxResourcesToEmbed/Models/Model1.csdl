@@ -1,0 +1,366 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Smart_HealthCareModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CollageName">
+    <Key>
+      <PropertyRef Name="CollageId" />
+    </Key>
+    <Property Name="CollageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CollageName1" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="DoctorStudyInformations" Relationship="Self.FK_DoctorStudyInformation_CollageName" FromRole="CollageName" ToRole="DoctorStudyInformation" />
+  </EntityType>
+  <EntityType Name="Division">
+    <Key>
+      <PropertyRef Name="DivisionId" />
+    </Key>
+    <Property Name="DivisionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DivisionName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Zilas" Relationship="Self.FK_Zila_Division" FromRole="Division" ToRole="Zila" />
+  </EntityType>
+  <EntityType Name="DoctorInformation">
+    <Key>
+      <PropertyRef Name="DoctorId" />
+    </Key>
+    <Property Name="DoctorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DoctorName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DoctorImage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DoctorContact" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DoctorEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DoctorAddressId" Type="Int32" Nullable="false" />
+    <Property Name="RegistrationId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Upazila" Relationship="Self.FK_DoctorInformation_Upazila" FromRole="DoctorInformation" ToRole="Upazila" />
+    <NavigationProperty Name="UserRegistration" Relationship="Self.FK_DoctorInformation_UserRegistration" FromRole="DoctorInformation" ToRole="UserRegistration" />
+    <NavigationProperty Name="DoctorStudyInformations" Relationship="Self.FK_DoctorStudyInformation_DoctorInformation" FromRole="DoctorInformation" ToRole="DoctorStudyInformation" />
+    <NavigationProperty Name="DoctorWorkplaceInformations" Relationship="Self.FK_DoctorWorkplaceInformation_DoctorWorkplaceInformation" FromRole="DoctorInformation" ToRole="DoctorWorkplaceInformation" />
+    <NavigationProperty Name="RatingAndCommands" Relationship="Self.FK_RatingAndCommand_DoctorInformation" FromRole="DoctorInformation" ToRole="RatingAndCommand" />
+  </EntityType>
+  <EntityType Name="DoctorStudyInformation">
+    <Key>
+      <PropertyRef Name="DoctorStudyId" />
+    </Key>
+    <Property Name="DoctorStudyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DoctorId" Type="Int32" Nullable="false" />
+    <Property Name="CollageId" Type="Int32" />
+    <Property Name="StudyType" Type="Int32" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="MakeDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="CollageName" Relationship="Self.FK_DoctorStudyInformation_CollageName" FromRole="DoctorStudyInformation" ToRole="CollageName" />
+    <NavigationProperty Name="DoctorInformation" Relationship="Self.FK_DoctorStudyInformation_DoctorInformation" FromRole="DoctorStudyInformation" ToRole="DoctorInformation" />
+    <NavigationProperty Name="StudyTypeInformation" Relationship="Self.FK_DoctorStudyInformation_StudyTypeInformation1" FromRole="DoctorStudyInformation" ToRole="StudyTypeInformation" />
+  </EntityType>
+  <EntityType Name="DoctorWorkplaceInformation">
+    <Key>
+      <PropertyRef Name="WorkPlaceId" />
+    </Key>
+    <Property Name="WorkPlaceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DoctorId" Type="Int32" Nullable="false" />
+    <Property Name="PlaceName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PlaceAddressId" Type="Int32" Nullable="false" />
+    <Property Name="JoiningDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PresentStatus" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="DoctorInformation" Relationship="Self.FK_DoctorWorkplaceInformation_DoctorWorkplaceInformation" FromRole="DoctorWorkplaceInformation" ToRole="DoctorInformation" />
+    <NavigationProperty Name="Upazila" Relationship="Self.FK_DoctorWorkplaceInformation_Upazila" FromRole="DoctorWorkplaceInformation" ToRole="Upazila" />
+  </EntityType>
+  <EntityType Name="LoginInformation">
+    <Key>
+      <PropertyRef Name="LoginId" />
+    </Key>
+    <Property Name="LoginId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RegistrationId" Type="Int32" Nullable="false" />
+    <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LoginTime" Type="Time" Precision="7" />
+    <NavigationProperty Name="UserRegistration" Relationship="Self.FK_LoginInformation_UserRegistration" FromRole="LoginInformation" ToRole="UserRegistration" />
+  </EntityType>
+  <EntityType Name="PatientInformation">
+    <Key>
+      <PropertyRef Name="PatientId" />
+    </Key>
+    <Property Name="PatientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PatientImage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PatientName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PatientMail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PatientContact" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PatientAddressId" Type="Int32" Nullable="false" />
+    <Property Name="RegistrationId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Upazila" Relationship="Self.FK_PatientInformation_Upazila" FromRole="PatientInformation" ToRole="Upazila" />
+    <NavigationProperty Name="UserRegistration" Relationship="Self.FK_PatientInformation_UserRegistration" FromRole="PatientInformation" ToRole="UserRegistration" />
+  </EntityType>
+  <EntityType Name="RatingAndCommand">
+    <Key>
+      <PropertyRef Name="RatingId" />
+    </Key>
+    <Property Name="RatingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DoctorId" Type="Int32" Nullable="false" />
+    <Property Name="PatientId" Type="Int32" Nullable="false" />
+    <Property Name="RatingPoint" Type="Int32" />
+    <Property Name="Command" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DoctorInformation" Relationship="Self.FK_RatingAndCommand_DoctorInformation" FromRole="RatingAndCommand" ToRole="DoctorInformation" />
+  </EntityType>
+  <EntityType Name="StudyTypeInformation">
+    <Key>
+      <PropertyRef Name="StudyId" />
+    </Key>
+    <Property Name="StudyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudyType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="DoctorStudyInformations" Relationship="Self.FK_DoctorStudyInformation_StudyTypeInformation1" FromRole="StudyTypeInformation" ToRole="DoctorStudyInformation" />
+  </EntityType>
+  <EntityType Name="Upazila">
+    <Key>
+      <PropertyRef Name="UpazilaId" />
+    </Key>
+    <Property Name="UpazilaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UpazilaName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ZilaId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DoctorInformations" Relationship="Self.FK_DoctorInformation_Upazila" FromRole="Upazila" ToRole="DoctorInformation" />
+    <NavigationProperty Name="DoctorWorkplaceInformations" Relationship="Self.FK_DoctorWorkplaceInformation_Upazila" FromRole="Upazila" ToRole="DoctorWorkplaceInformation" />
+    <NavigationProperty Name="PatientInformations" Relationship="Self.FK_PatientInformation_Upazila" FromRole="Upazila" ToRole="PatientInformation" />
+    <NavigationProperty Name="Zila" Relationship="Self.FK_Upazila_Zila" FromRole="Upazila" ToRole="Zila" />
+  </EntityType>
+  <EntityType Name="UserRegistration">
+    <Key>
+      <PropertyRef Name="RegistrationId" />
+    </Key>
+    <Property Name="RegistrationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserType" Type="Boolean" />
+    <Property Name="MakeDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="DoctorInformations" Relationship="Self.FK_DoctorInformation_UserRegistration" FromRole="UserRegistration" ToRole="DoctorInformation" />
+    <NavigationProperty Name="LoginInformations" Relationship="Self.FK_LoginInformation_UserRegistration" FromRole="UserRegistration" ToRole="LoginInformation" />
+    <NavigationProperty Name="PatientInformations" Relationship="Self.FK_PatientInformation_UserRegistration" FromRole="UserRegistration" ToRole="PatientInformation" />
+  </EntityType>
+  <EntityType Name="Zila">
+    <Key>
+      <PropertyRef Name="ZilaId" />
+    </Key>
+    <Property Name="ZilaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ZilaName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DivisionId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Division" Relationship="Self.FK_Zila_Division" FromRole="Zila" ToRole="Division" />
+    <NavigationProperty Name="Upazila" Relationship="Self.FK_Upazila_Zila" FromRole="Zila" ToRole="Upazila" />
+  </EntityType>
+  <Association Name="FK_DoctorStudyInformation_CollageName">
+    <End Role="CollageName" Type="Self.CollageName" Multiplicity="0..1" />
+    <End Role="DoctorStudyInformation" Type="Self.DoctorStudyInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CollageName">
+        <PropertyRef Name="CollageId" />
+      </Principal>
+      <Dependent Role="DoctorStudyInformation">
+        <PropertyRef Name="CollageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zila_Division">
+    <End Role="Division" Type="Self.Division" Multiplicity="1" />
+    <End Role="Zila" Type="Self.Zila" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Division">
+        <PropertyRef Name="DivisionId" />
+      </Principal>
+      <Dependent Role="Zila">
+        <PropertyRef Name="DivisionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DoctorInformation_Upazila">
+    <End Role="Upazila" Type="Self.Upazila" Multiplicity="1" />
+    <End Role="DoctorInformation" Type="Self.DoctorInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Upazila">
+        <PropertyRef Name="UpazilaId" />
+      </Principal>
+      <Dependent Role="DoctorInformation">
+        <PropertyRef Name="DoctorAddressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DoctorInformation_UserRegistration">
+    <End Role="UserRegistration" Type="Self.UserRegistration" Multiplicity="1" />
+    <End Role="DoctorInformation" Type="Self.DoctorInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserRegistration">
+        <PropertyRef Name="RegistrationId" />
+      </Principal>
+      <Dependent Role="DoctorInformation">
+        <PropertyRef Name="RegistrationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DoctorStudyInformation_DoctorInformation">
+    <End Role="DoctorInformation" Type="Self.DoctorInformation" Multiplicity="1" />
+    <End Role="DoctorStudyInformation" Type="Self.DoctorStudyInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DoctorInformation">
+        <PropertyRef Name="DoctorId" />
+      </Principal>
+      <Dependent Role="DoctorStudyInformation">
+        <PropertyRef Name="DoctorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DoctorWorkplaceInformation_DoctorWorkplaceInformation">
+    <End Role="DoctorInformation" Type="Self.DoctorInformation" Multiplicity="1" />
+    <End Role="DoctorWorkplaceInformation" Type="Self.DoctorWorkplaceInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DoctorInformation">
+        <PropertyRef Name="DoctorId" />
+      </Principal>
+      <Dependent Role="DoctorWorkplaceInformation">
+        <PropertyRef Name="DoctorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RatingAndCommand_DoctorInformation">
+    <End Role="DoctorInformation" Type="Self.DoctorInformation" Multiplicity="1" />
+    <End Role="RatingAndCommand" Type="Self.RatingAndCommand" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DoctorInformation">
+        <PropertyRef Name="DoctorId" />
+      </Principal>
+      <Dependent Role="RatingAndCommand">
+        <PropertyRef Name="DoctorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DoctorStudyInformation_StudyTypeInformation1">
+    <End Role="StudyTypeInformation" Type="Self.StudyTypeInformation" Multiplicity="1" />
+    <End Role="DoctorStudyInformation" Type="Self.DoctorStudyInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StudyTypeInformation">
+        <PropertyRef Name="StudyId" />
+      </Principal>
+      <Dependent Role="DoctorStudyInformation">
+        <PropertyRef Name="StudyType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DoctorWorkplaceInformation_Upazila">
+    <End Role="Upazila" Type="Self.Upazila" Multiplicity="1" />
+    <End Role="DoctorWorkplaceInformation" Type="Self.DoctorWorkplaceInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Upazila">
+        <PropertyRef Name="UpazilaId" />
+      </Principal>
+      <Dependent Role="DoctorWorkplaceInformation">
+        <PropertyRef Name="PlaceAddressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LoginInformation_UserRegistration">
+    <End Role="UserRegistration" Type="Self.UserRegistration" Multiplicity="1" />
+    <End Role="LoginInformation" Type="Self.LoginInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserRegistration">
+        <PropertyRef Name="RegistrationId" />
+      </Principal>
+      <Dependent Role="LoginInformation">
+        <PropertyRef Name="RegistrationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientInformation_Upazila">
+    <End Role="Upazila" Type="Self.Upazila" Multiplicity="1" />
+    <End Role="PatientInformation" Type="Self.PatientInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Upazila">
+        <PropertyRef Name="UpazilaId" />
+      </Principal>
+      <Dependent Role="PatientInformation">
+        <PropertyRef Name="PatientAddressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientInformation_UserRegistration">
+    <End Role="UserRegistration" Type="Self.UserRegistration" Multiplicity="1" />
+    <End Role="PatientInformation" Type="Self.PatientInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserRegistration">
+        <PropertyRef Name="RegistrationId" />
+      </Principal>
+      <Dependent Role="PatientInformation">
+        <PropertyRef Name="RegistrationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Upazila_Zila">
+    <End Role="Zila" Type="Self.Zila" Multiplicity="1" />
+    <End Role="Upazila" Type="Self.Upazila" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Zila">
+        <PropertyRef Name="ZilaId" />
+      </Principal>
+      <Dependent Role="Upazila">
+        <PropertyRef Name="UpazilaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Smart_HealthCareEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CollageNames" EntityType="Self.CollageName" />
+    <EntitySet Name="Divisions" EntityType="Self.Division" />
+    <EntitySet Name="DoctorInformations" EntityType="Self.DoctorInformation" />
+    <EntitySet Name="DoctorStudyInformations" EntityType="Self.DoctorStudyInformation" />
+    <EntitySet Name="DoctorWorkplaceInformations" EntityType="Self.DoctorWorkplaceInformation" />
+    <EntitySet Name="LoginInformations" EntityType="Self.LoginInformation" />
+    <EntitySet Name="PatientInformations" EntityType="Self.PatientInformation" />
+    <EntitySet Name="RatingAndCommands" EntityType="Self.RatingAndCommand" />
+    <EntitySet Name="StudyTypeInformations" EntityType="Self.StudyTypeInformation" />
+    <EntitySet Name="Upazilas" EntityType="Self.Upazila" />
+    <EntitySet Name="UserRegistrations" EntityType="Self.UserRegistration" />
+    <EntitySet Name="Zilas" EntityType="Self.Zila" />
+    <AssociationSet Name="FK_DoctorStudyInformation_CollageName" Association="Self.FK_DoctorStudyInformation_CollageName">
+      <End Role="CollageName" EntitySet="CollageNames" />
+      <End Role="DoctorStudyInformation" EntitySet="DoctorStudyInformations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zila_Division" Association="Self.FK_Zila_Division">
+      <End Role="Division" EntitySet="Divisions" />
+      <End Role="Zila" EntitySet="Zilas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DoctorInformation_Upazila" Association="Self.FK_DoctorInformation_Upazila">
+      <End Role="Upazila" EntitySet="Upazilas" />
+      <End Role="DoctorInformation" EntitySet="DoctorInformations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DoctorInformation_UserRegistration" Association="Self.FK_DoctorInformation_UserRegistration">
+      <End Role="UserRegistration" EntitySet="UserRegistrations" />
+      <End Role="DoctorInformation" EntitySet="DoctorInformations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DoctorStudyInformation_DoctorInformation" Association="Self.FK_DoctorStudyInformation_DoctorInformation">
+      <End Role="DoctorInformation" EntitySet="DoctorInformations" />
+      <End Role="DoctorStudyInformation" EntitySet="DoctorStudyInformations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DoctorWorkplaceInformation_DoctorWorkplaceInformation" Association="Self.FK_DoctorWorkplaceInformation_DoctorWorkplaceInformation">
+      <End Role="DoctorInformation" EntitySet="DoctorInformations" />
+      <End Role="DoctorWorkplaceInformation" EntitySet="DoctorWorkplaceInformations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RatingAndCommand_DoctorInformation" Association="Self.FK_RatingAndCommand_DoctorInformation">
+      <End Role="DoctorInformation" EntitySet="DoctorInformations" />
+      <End Role="RatingAndCommand" EntitySet="RatingAndCommands" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DoctorStudyInformation_StudyTypeInformation1" Association="Self.FK_DoctorStudyInformation_StudyTypeInformation1">
+      <End Role="StudyTypeInformation" EntitySet="StudyTypeInformations" />
+      <End Role="DoctorStudyInformation" EntitySet="DoctorStudyInformations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DoctorWorkplaceInformation_Upazila" Association="Self.FK_DoctorWorkplaceInformation_Upazila">
+      <End Role="Upazila" EntitySet="Upazilas" />
+      <End Role="DoctorWorkplaceInformation" EntitySet="DoctorWorkplaceInformations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LoginInformation_UserRegistration" Association="Self.FK_LoginInformation_UserRegistration">
+      <End Role="UserRegistration" EntitySet="UserRegistrations" />
+      <End Role="LoginInformation" EntitySet="LoginInformations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientInformation_Upazila" Association="Self.FK_PatientInformation_Upazila">
+      <End Role="Upazila" EntitySet="Upazilas" />
+      <End Role="PatientInformation" EntitySet="PatientInformations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientInformation_UserRegistration" Association="Self.FK_PatientInformation_UserRegistration">
+      <End Role="UserRegistration" EntitySet="UserRegistrations" />
+      <End Role="PatientInformation" EntitySet="PatientInformations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Upazila_Zila" Association="Self.FK_Upazila_Zila">
+      <End Role="Zila" EntitySet="Zilas" />
+      <End Role="Upazila" EntitySet="Upazilas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

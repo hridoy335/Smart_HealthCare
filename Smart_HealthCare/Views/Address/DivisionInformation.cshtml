@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Smart_HealthCare.Models.Division>
+
+@{
+    ViewBag.Title = "DivisionInformation";
+    Layout = "~/Views/Shared/_AdminLauout.cshtml";
+}
+
+<h5>Division Information</h5>
+
+<p>
+    @Html.ActionLink("Create New", "DivisionCreate","Address")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DivisionName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DivisionName)
+        </td>
+        <td>
+            @Html.ActionLink("Update", "Edit", new { id=item.DivisionId }) |
+            @*@Html.ActionLink("Details", "Details", new { id=item.DivisionId }) |*@
+            @Html.ActionLink("Delete", "Delete", new { id=item.DivisionId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Smart_HealthCareModelStoreContainer" CdmEntityContainer="Smart_HealthCareEntities1">
+    <EntitySetMapping Name="CollageNames">
+      <EntityTypeMapping TypeName="Smart_HealthCareModel.CollageName">
+        <MappingFragment StoreEntitySet="CollageName">
+          <ScalarProperty Name="CollageId" ColumnName="CollageId" />
+          <ScalarProperty Name="CollageName1" ColumnName="CollageName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Divisions">
+      <EntityTypeMapping TypeName="Smart_HealthCareModel.Division">
+        <MappingFragment StoreEntitySet="Division">
+          <ScalarProperty Name="DivisionId" ColumnName="DivisionId" />
+          <ScalarProperty Name="DivisionName" ColumnName="DivisionName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DoctorInformations">
+      <EntityTypeMapping TypeName="Smart_HealthCareModel.DoctorInformation">
+        <MappingFragment StoreEntitySet="DoctorInformation">
+          <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+          <ScalarProperty Name="DoctorName" ColumnName="DoctorName" />
+          <ScalarProperty Name="DoctorImage" ColumnName="DoctorImage" />
+          <ScalarProperty Name="DoctorContact" ColumnName="DoctorContact" />
+          <ScalarProperty Name="DoctorEmail" ColumnName="DoctorEmail" />
+          <ScalarProperty Name="DoctorAddressId" ColumnName="DoctorAddressId" />
+          <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DoctorStudyInformations">
+      <EntityTypeMapping TypeName="Smart_HealthCareModel.DoctorStudyInformation">
+        <MappingFragment StoreEntitySet="DoctorStudyInformation">
+          <ScalarProperty Name="DoctorStudyId" ColumnName="DoctorStudyId" />
+          <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+          <ScalarProperty Name="CollageId" ColumnName="CollageId" />
+          <ScalarProperty Name="StudyType" ColumnName="StudyType" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="MakeDate" ColumnName="MakeDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DoctorWorkplaceInformations">
+      <EntityTypeMapping TypeName="Smart_HealthCareModel.DoctorWorkplaceInformation">
+        <MappingFragment StoreEntitySet="DoctorWorkplaceInformation">
+          <ScalarProperty Name="WorkPlaceId" ColumnName="WorkPlaceId" />
+          <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+          <ScalarProperty Name="PlaceName" ColumnName="PlaceName" />
+          <ScalarProperty Name="PlaceAddressId" ColumnName="PlaceAddressId" />
+          <ScalarProperty Name="JoiningDate" ColumnName="JoiningDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="PresentStatus" ColumnName="PresentStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoginInformations">
+      <EntityTypeMapping TypeName="Smart_HealthCareModel.LoginInformation">
+        <MappingFragment StoreEntitySet="LoginInformation">
+          <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+          <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+          <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+          <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PatientInformations">
+      <EntityTypeMapping TypeName="Smart_HealthCareModel.PatientInformation">
+        <MappingFragment StoreEntitySet="PatientInformation">
+          <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+          <ScalarProperty Name="PatientImage" ColumnName="PatientImage" />
+          <ScalarProperty Name="PatientName" ColumnName="PatientName" />
+          <ScalarProperty Name="PatientMail" ColumnName="PatientMail" />
+          <ScalarProperty Name="PatientContact" ColumnName="PatientContact" />
+          <ScalarProperty Name="PatientAddressId" ColumnName="PatientAddressId" />
+          <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RatingAndCommands">
+      <EntityTypeMapping TypeName="Smart_HealthCareModel.RatingAndCommand">
+        <MappingFragment StoreEntitySet="RatingAndCommand">
+          <ScalarProperty Name="RatingId" ColumnName="RatingId" />
+          <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+          <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+          <ScalarProperty Name="RatingPoint" ColumnName="RatingPoint" />
+          <ScalarProperty Name="Command" ColumnName="Command" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudyTypeInformations">
+      <EntityTypeMapping TypeName="Smart_HealthCareModel.StudyTypeInformation">
+        <MappingFragment StoreEntitySet="StudyTypeInformation">
+          <ScalarProperty Name="StudyId" ColumnName="StudyId" />
+          <ScalarProperty Name="StudyType" ColumnName="StudyType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Upazilas">
+      <EntityTypeMapping TypeName="Smart_HealthCareModel.Upazila">
+        <MappingFragment StoreEntitySet="Upazila">
+          <ScalarProperty Name="UpazilaId" ColumnName="UpazilaId" />
+          <ScalarProperty Name="UpazilaName" ColumnName="UpazilaName" />
+          <ScalarProperty Name="ZilaId" ColumnName="ZilaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRegistrations">
+      <EntityTypeMapping TypeName="Smart_HealthCareModel.UserRegistration">
+        <MappingFragment StoreEntitySet="UserRegistration">
+          <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="MakeDate" ColumnName="MakeDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zilas">
+      <EntityTypeMapping TypeName="Smart_HealthCareModel.Zila">
+        <MappingFragment StoreEntitySet="Zila">
+          <ScalarProperty Name="ZilaId" ColumnName="ZilaId" />
+          <ScalarProperty Name="ZilaName" ColumnName="ZilaName" />
+          <ScalarProperty Name="DivisionId" ColumnName="DivisionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

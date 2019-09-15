@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9283d34d7dab47fe930ab2680bb5da42" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="Smart_HealthCareModel.CollageName" Width="1.5" PointX="6" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Smart_HealthCareModel.Division" Width="1.5" PointX="1.5" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Smart_HealthCareModel.DoctorInformation" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Smart_HealthCareModel.DoctorStudyInformation" Width="1.5" PointX="8.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Smart_HealthCareModel.DoctorWorkplaceInformation" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Smart_HealthCareModel.LoginInformation" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Smart_HealthCareModel.PatientInformation" Width="1.5" PointX="6" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="Smart_HealthCareModel.RatingAndCommand" Width="1.5" PointX="5.25" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Smart_HealthCareModel.StudyTypeInformation" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Smart_HealthCareModel.Upazila" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Smart_HealthCareModel.UserRegistration" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="Smart_HealthCareModel.Zila" Width="1.5" PointX="1.5" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="Smart_HealthCareModel.FK_DoctorStudyInformation_CollageName" ManuallyRouted="false" />
+        <AssociationConnector Association="Smart_HealthCareModel.FK_Zila_Division" ManuallyRouted="false" />
+        <AssociationConnector Association="Smart_HealthCareModel.FK_DoctorInformation_Upazila" ManuallyRouted="false" />
+        <AssociationConnector Association="Smart_HealthCareModel.FK_DoctorInformation_UserRegistration" ManuallyRouted="false" />
+        <AssociationConnector Association="Smart_HealthCareModel.FK_DoctorStudyInformation_DoctorInformation" ManuallyRouted="false" />
+        <AssociationConnector Association="Smart_HealthCareModel.FK_DoctorWorkplaceInformation_DoctorWorkplaceInformation" ManuallyRouted="false" />
+        <AssociationConnector Association="Smart_HealthCareModel.FK_RatingAndCommand_DoctorInformation" ManuallyRouted="false" />
+        <AssociationConnector Association="Smart_HealthCareModel.FK_DoctorStudyInformation_StudyTypeInformation1" ManuallyRouted="false" />
+        <AssociationConnector Association="Smart_HealthCareModel.FK_DoctorWorkplaceInformation_Upazila" ManuallyRouted="false" />
+        <AssociationConnector Association="Smart_HealthCareModel.FK_LoginInformation_UserRegistration" ManuallyRouted="false" />
+        <AssociationConnector Association="Smart_HealthCareModel.FK_PatientInformation_Upazila" ManuallyRouted="false" />
+        <AssociationConnector Association="Smart_HealthCareModel.FK_PatientInformation_UserRegistration" ManuallyRouted="false" />
+        <AssociationConnector Association="Smart_HealthCareModel.FK_Upazila_Zila" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
