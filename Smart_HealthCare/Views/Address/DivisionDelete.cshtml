@@ -1,0 +1,33 @@
+﻿@model Smart_HealthCare.Models.Division
+
+@{
+    ViewBag.Title = "DivisionDelete";
+    Layout = "~/Views/Shared/_AdminLauout.cshtml";
+}
+
+<h5>Division Delete</h5>
+
+<span style="color:red"><h5 >Are you sure you want to delete this?</h5>  </span>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DivisionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DivisionName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to Division Information", "DivisionInformation")
+        </div>
+    }
+</div>
