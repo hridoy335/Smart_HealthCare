@@ -33,5 +33,6 @@ namespace Smart_HealthCare.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PatientInformation> PatientInformations { get; set; }
         public virtual Zila Zila { get; set; }
+        public virtual Zila Zila1 { get; set; }
     }
 }

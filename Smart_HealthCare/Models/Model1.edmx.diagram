@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9283d34d7dab47fe930ab2680bb5da42" Name="Diagram1" ZoomLevel="55">
+      <Diagram DiagramId="9283d34d7dab47fe930ab2680bb5da42" Name="Diagram1" ZoomLevel="63">
         <EntityTypeShape EntityType="Smart_HealthCareModel.CollageName" Width="1.5" PointX="6" PointY="12.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Smart_HealthCareModel.Division" Width="1.5" PointX="1.5" PointY="15.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Smart_HealthCareModel.DoctorInformation" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
@@ -30,6 +30,7 @@
         <AssociationConnector Association="Smart_HealthCareModel.FK_PatientInformation_Upazila" ManuallyRouted="false" />
         <AssociationConnector Association="Smart_HealthCareModel.FK_PatientInformation_UserRegistration" ManuallyRouted="false" />
         <AssociationConnector Association="Smart_HealthCareModel.FK_Upazila_Zila" ManuallyRouted="false" />
+        <AssociationConnector Association="Smart_HealthCareModel.FK_Upazila_Zila1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

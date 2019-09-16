@@ -92,5 +92,170 @@ namespace Smart_HealthCare.Controllers
             db.SaveChanges();
             return RedirectToAction("DivisionInformation","Address");
         }
+
+
+        public ActionResult ZilaInformation()
+        {
+            return View(db.Zilas.OrderBy(Zila=>Zila.Division.DivisionName).ToList());
+        }
+
+
+        [HttpGet]
+        public ActionResult ZilaCreate()
+        {
+            ViewBag.DivisionId= new SelectList(db.Divisions, "DivisionId", "DivisionName");
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ZilaCreate([Bind(Include = "ZilaId,ZilaName,DivisionId")] Zila zila, int? DivisionId)
+        {
+            int er = 0;
+            if (DivisionId == null)
+            {
+                er++;
+                ViewBag.erDivision = "Select one division name. ";
+            }
+            if (er > 0)
+            {
+                ViewBag.DivisionId = new SelectList(db.Divisions, "DivisionId", "DivisionName");
+                return View();
+
+            }
+            if (ModelState.IsValid)
+            {
+                var Zila1 = db.Zilas.Where(x => x.ZilaName == zila.ZilaName ).FirstOrDefault();
+                if (Zila1 == null)
+                {
+                    db.Zilas.Add(zila);
+                    db.SaveChanges();
+                    return RedirectToAction("ZilaInformation", "Address");
+                }
+                else
+                {
+                    ViewBag.DivisionId = new SelectList(db.Divisions, "DivisionId", "DivisionName");
+                    ViewBag.ermessage = "This zila already here.";
+                    return View(); 
+                }
+            }
+
+
+            ViewBag.DivisionId = new SelectList(db.Divisions, "DivisionId", "DivisionName");
+            return View();
+
+        }
+
+        [HttpGet]
+        public ActionResult UpdateZila(int?id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+
+            Zila zila = db.Zilas.Find(id);
+
+            if (zila == null)
+            {
+                return HttpNotFound();
+            }
+            
+            ViewBag.DivisionId = new SelectList(db.Divisions, "DivisionId", "DivisionName", zila.DivisionId);
+            return View(zila);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateZila([Bind(Include = "ZilaId,ZilaName,DivisionId")] Zila zila, int? DivisionId)
+        {
+            int er = 0;
+            if (DivisionId==null)
+            {
+                er++;
+            }
+            if (er > 0)
+            {
+                ViewBag.DivisionId = new SelectList(db.Divisions, "DivisionId", "DivisionName", zila.DivisionId);
+                return View(zila);
+            }
+            if (ModelState.IsValid)
+            {
+               // zila.DivisionId = i DivisionId;
+                db.Entry(zila).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("ZilaInformation");
+            }
+            ViewBag.DivisionId = new SelectList(db.Divisions, "DivisionId", "DivisionName", zila.DivisionId);
+            return View(zila);
+        }
+
+
+        [HttpGet]
+        public ActionResult DeleteZila(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            
+            Zila zila = db.Zilas.Find(id);
+            if (zila == null)
+            {
+                return HttpNotFound();
+            }
+            return View(zila);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteZila(int id)
+        {
+
+            Zila zila = db.Zilas.Find(id);
+            db.Zilas.Remove(zila);
+            db.SaveChanges();
+            return RedirectToAction("ZilaInformation", "Address");
+        }
+
+
+        public ActionResult UpazilaInformation()
+        {
+            return View(db.Upazilas.ToList());
+        }
+
+        [HttpGet]
+        public ActionResult UpazilaCreate()
+        {
+            ViewBag.ZilaId = new SelectList(db.Zilas, "ZilaId", "ZilaName");
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult UpazilaCreate(/*[Bind(Include = "UpazilaName,ZilaId")] */Upazila upazila, int? Zilaid)
+        {
+            int er = 0;
+            if (Zilaid == null)
+            {
+                er++;
+            }
+            if (er > 0)
+            {
+                ViewBag.ZilaId = new SelectList(db.Zilas, "ZilaId", "ZilaName");
+                return View();
+            }
+
+            if(ModelState.IsValid)
+            {
+                db.Upazilas.Add(upazila);
+     
+                db.SaveChanges();
+                return RedirectToAction("UpazilaInformation", "Address");
+
+            }
+            ViewBag.ZilaId = new SelectList(db.Zilas, "ZilaId", "ZilaName");
+            return View();
+
+        }
+
+
     }
 }

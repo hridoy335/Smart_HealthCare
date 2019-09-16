@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Smart_HealthCare.Models.Upazila>
+
+@{
+    ViewBag.Title = "UpazilaInformation";
+    Layout = "~/Views/Shared/_AdminLauout.cshtml";
+}
+
+<h5>Upazila Information</h5>
+
+<p>
+    @Html.ActionLink("Create New Upazila", "UpazilaCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UpazilaName)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.ZilaId)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Zila.ZilaName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpazilaName)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.ZilaId)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Zila.ZilaName)
+        </td>
+        <td>
+            @Html.ActionLink("Update", "UpazilaUpdate", new { id=item.UpazilaId }) |
+            @*@Html.ActionLink("Details", "Details", new { id=item.UpazilaId }) |*@
+            @Html.ActionLink("Delete", "UpazilaDelete", new { id=item.UpazilaId })
+        </td>
+    </tr>
+}
+
+</table>

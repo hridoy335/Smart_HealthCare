@@ -249,13 +249,13 @@
   </Association>
   <Association Name="FK_Upazila_Zila">
     <End Role="Zila" Type="Self.Zila" Multiplicity="1" />
-    <End Role="Upazila" Type="Self.Upazila" Multiplicity="0..1" />
+    <End Role="Upazila" Type="Self.Upazila" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Zila">
         <PropertyRef Name="ZilaId" />
       </Principal>
       <Dependent Role="Upazila">
-        <PropertyRef Name="UpazilaId" />
+        <PropertyRef Name="ZilaId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

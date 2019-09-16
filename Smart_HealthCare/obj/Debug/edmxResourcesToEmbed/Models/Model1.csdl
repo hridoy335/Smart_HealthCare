@@ -116,6 +116,7 @@
     <NavigationProperty Name="DoctorWorkplaceInformations" Relationship="Self.FK_DoctorWorkplaceInformation_Upazila" FromRole="Upazila" ToRole="DoctorWorkplaceInformation" />
     <NavigationProperty Name="PatientInformations" Relationship="Self.FK_PatientInformation_Upazila" FromRole="Upazila" ToRole="PatientInformation" />
     <NavigationProperty Name="Zila" Relationship="Self.FK_Upazila_Zila" FromRole="Upazila" ToRole="Zila" />
+    <NavigationProperty Name="Zila1" Relationship="Smart_HealthCareModel.FK_Upazila_Zila1" FromRole="Upazila" ToRole="Zila" />
   </EntityType>
   <EntityType Name="UserRegistration">
     <Key>
@@ -140,6 +141,7 @@
     <Property Name="DivisionId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Division" Relationship="Self.FK_Zila_Division" FromRole="Zila" ToRole="Division" />
     <NavigationProperty Name="Upazila" Relationship="Self.FK_Upazila_Zila" FromRole="Zila" ToRole="Upazila" />
+    <NavigationProperty Name="Upazilas" Relationship="Smart_HealthCareModel.FK_Upazila_Zila1" FromRole="Zila" ToRole="Upazila" />
   </EntityType>
   <Association Name="FK_DoctorStudyInformation_CollageName">
     <End Role="CollageName" Type="Self.CollageName" Multiplicity="0..1" />
@@ -362,5 +364,21 @@
       <End Role="Zila" EntitySet="Zilas" />
       <End Role="Upazila" EntitySet="Upazilas" />
     </AssociationSet>
+    <AssociationSet Name="FK_Upazila_Zila1" Association="Smart_HealthCareModel.FK_Upazila_Zila1">
+      <End Role="Zila" EntitySet="Zilas" />
+      <End Role="Upazila" EntitySet="Upazilas" />
+    </AssociationSet>
   </EntityContainer>
+  <Association Name="FK_Upazila_Zila1">
+    <End Type="Smart_HealthCareModel.Zila" Role="Zila" Multiplicity="1" />
+    <End Type="Smart_HealthCareModel.Upazila" Role="Upazila" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zila">
+        <PropertyRef Name="ZilaId" />
+      </Principal>
+      <Dependent Role="Upazila">
+        <PropertyRef Name="ZilaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

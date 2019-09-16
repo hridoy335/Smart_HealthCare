@@ -304,6 +304,12 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Address\DivisionUpdate.cshtml" />
     <Content Include="Views\Address\DivisionDelete.cshtml" />
+    <Content Include="Views\Address\ZilaInformation.cshtml" />
+    <Content Include="Views\Address\ZilaCreate.cshtml" />
+    <Content Include="Views\Address\UpazilaInformation.cshtml" />
+    <Content Include="Views\Address\DeleteZila.cshtml" />
+    <Content Include="Views\Address\UpdateZila.cshtml" />
+    <Content Include="Views\Address\UpazilaCreate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

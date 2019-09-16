@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Smart_HealthCare.Models.Zila>
+
+@{
+    ViewBag.Title = "ZilaInformation";
+    Layout = "~/Views/Shared/_AdminLauout.cshtml";
+}
+
+<h5>Zila Information</h5>
+
+<p>
+    @Html.ActionLink("Create New Zila", "ZilaCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ZilaName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Division.DivisionName)
+        </th>
+    
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ZilaName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Division.DivisionName)
+        </td>
+   
+        <td>
+            @Html.ActionLink("Update", "UpdateZila", new { id=item.ZilaId }) |
+           
+            @Html.ActionLink("Delete", "DeleteZila", new { id=item.ZilaId })
+        </td>
+    </tr>
+}
+
+</table>

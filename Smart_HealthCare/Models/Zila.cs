@@ -14,11 +14,19 @@ namespace Smart_HealthCare.Models
     
     public partial class Zila
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Zila()
+        {
+            this.Upazilas = new HashSet<Upazila>();
+        }
+    
         public int ZilaId { get; set; }
         public string ZilaName { get; set; }
         public int DivisionId { get; set; }
     
         public virtual Division Division { get; set; }
         public virtual Upazila Upazila { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Upazila> Upazilas { get; set; }
     }
 }

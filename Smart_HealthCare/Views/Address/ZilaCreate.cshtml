@@ -1,0 +1,48 @@
+﻿@model Smart_HealthCare.Models.Zila
+
+@{
+    ViewBag.Title = "ZilaCreate";
+    Layout = "~/Views/Shared/_AdminLauout.cshtml";
+}
+
+<h5>Zila Create</h5>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+
+        <hr />
+        
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.ZilaName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.ZilaName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ZilaName, "", new { @class = "text-danger" })
+                <span class="alert-danger">@ViewBag.ermessage</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DivisionId, "DivisionId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.DropDownList("DivisionId", null,"Select one devision", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DivisionId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to Zila List", "ZilaInformation")
+</div>
+
